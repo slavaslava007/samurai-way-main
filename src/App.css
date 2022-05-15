@@ -1,28 +1,22 @@
-ul li {
-  list-style-type: armenian;
-}
 
 .App {
-  display: grid;
-  margin: 0 auto;
-  grid-template-areas: 'h h' 'c n';
-  width: 1200px;
+    display: grid;
 
-  grid-template-areas: " " ;
-  grid-template-rows: 2fr 2fr;
-  grid-template-rows: 2fr 2fr;
-  grid-gap: 10px;
+
+    grid-template-areas: 'h h' 'n p';
+
+
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+
+    grid-gap: 10px;
 }
 
-.h{
-  grid-area: h;
-}
-.n{
-  grid-area: n;
-}
-.c{
-  grid-area: c;
+.App-wrapper-content {
 
+    grid-area: p;
+    background-color: darkorange;
 }
+
 
 
