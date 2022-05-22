@@ -1,16 +1,18 @@
 import React from 'react';
 import c from './Nav.module.css'
+import {Dialogs} from "../Dialogs/Dialogs";
+import { NavLink } from 'react-router-dom';
+
 
 export const Nav = () => {
     return (
         <div className={c.nav}>
 
-                <div className={c.item}><a href='/profiles'>Profiles</a></div>
-                <div className={c.active}><a href='message'>Message</a></div>
-                <div className={c.item}><a>News</a></div>
-                <div className={c.item}><a>Music</a></div>
-                <div ><a>Setting</a></div>
-
+                <div className={c.item}><NavLink to='/profiles'>Profiles</NavLink></div>
+                <div className={`${c.active} ${c.item}`}><NavLink to='/dialogs'>Message</NavLink></div>
+                <div className={c.active}><NavLink to='/news'>News</NavLink></div>
+                <div className={c.item}><NavLink to='/music'>Music</NavLink></div>
+                <div className={c.item} ><NavLink to='/setting'>Setting</NavLink></div>
 
         </div>
     );
