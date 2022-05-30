@@ -1,30 +1,35 @@
 import React from 'react';
 import s from './MyPost.module.css';
 import {Post} from "./post/Post";
+import {PropsPostDateType} from "../../../redux/state";
 
-type PostProps={
-    id:number
-    name:string
-    like:number
+type PropsPostDate = {
+    post: Array<PropsPostDateType>
 }
 
-export const MyPost = (props:PostProps) => {
 
-    let postData=[
-        {id:1,name:'Hi, how are you?', like:6},
-        {id:1,name:'Hi, how are you?', like:6}
-    ]
+export const MyPost = (props: PropsPostDate) => {
+
+
+    let postMap = props.post.map(p => <Post name={p.message} like={p.like}/>)
+
+    let newPostElement= React.createRef<HTMLTextAreaElement>()
+
+    let addPost=()=>{
+        let text= newPostElement.current!.value;
+        alert(text)
+    }
 
     return (
         <div className={s.mypost}>
-            <div>My post<div>
-                  <div><input/></div>
-                <div className={s.post}><button>add post</button></div>
-                   NEW POST
-                </div>
-                <Post name={postData[0].name} like={postData[0].like}/>
-                <Post name={postData[0].name} like={postData[0].like}/>
-            </div>
+            <h3>My post</h3>
+            <textarea ref={newPostElement}></textarea>
+            <div><button onClick={addPost}>add post</button></div>
+
+            <div><input/></div>
+            <div className={s.post}>{postMap}</div>
+
+
         </div>
     );
 };

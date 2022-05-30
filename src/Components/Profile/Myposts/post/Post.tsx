@@ -11,7 +11,7 @@ export const Post = (props:PropsName) => {
     return (
                         <div>
                     <div className={s.post}>
-                        <img src='https://www.adobe.com/express/create/media_1fca2fb37ab14f94480f729e54e352ecf06979a42.jpeg?width=400&format=jpeg&optimize=medium'/>
+                        <img src='https://cdn.icon-icons.com/icons2/2389/PNG/512/react_logo_icon_144942.png'/>
                        { props.name}
                    <div><span>like</span> {props.like}</div>
                     </div>

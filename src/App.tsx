@@ -4,28 +4,34 @@ import {Header} from "./Components/Header/Header";
 import {Profile} from "./Components/Profile/Profile";
 import {Nav} from "./Components/Nav/Nav";
 import {Dialogs} from "./Components/Dialogs/Dialogs";
-import c from "./Components/Profile/Profile.module.css";
-import {BrowserRouter, Route} from "react-router-dom";
-import {News} from "./Components/News/News";
-import {Music} from "./Components/Music/Music";
-import {Setting} from "./Components/Setting/Setting";
+import {Route} from "react-router-dom";
+import { StateTypeProps} from './redux/state';
+import { addPost} from './redux/state';
 
 
-function App() {
+type AllProps = {
+    state: StateTypeProps
+}
+
+
+
+function App(props: AllProps) {
+
     return (
-        <BrowserRouter>
-            <div className="App">
-                <Header/>
-                <Nav/>
-                <div className='App-wrapper-content'>
-                    <Route  path='/dialogs' component={Dialogs}/>
-                    <Route path='/profiles' component={Profile}/>
-                    <Route path='/news' component={News}/>
-                    <Route path='/music' component={Music}/>
-                    <Route path='/setting' component={Setting}/>
-                </div>
+        <div className="App">
+            <Header/>
+            <Nav sidebar={props.state.sidebar}/>
+            <div className='App-wrapper-content'>
+                <Route path='/dialogs' render={() =>
+                    <Dialogs messages={props.state.dialogsPage.messageData}
+                             dialogs={props.state.dialogsPage.dialogData}/>}/>
+                <Route path='/profile' render={() =>
+                    <Profile posts={props.state.profilePage.postData}/>}/>
+
             </div>
-        </BrowserRouter>
+        </div>
+
     );
 }
+
 export default App;

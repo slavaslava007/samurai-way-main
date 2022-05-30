@@ -1,0 +1,14 @@
+
+
+.friend {
+   display: flex;
+   flex-direction: row;
+   justify-content: flex-start;
+   padding: 2px;
+
+}
+.pictures img {
+   height: 20px;
+   border-radius: 10px;
+
+}

@@ -6,7 +6,7 @@ export const ProfileInfo = () => {
     return (
 
                 <div >
-                    <div><img src='https://m-dekor.by/catalog/2366/main.webp'/></div>
+                    <div className={s.profile}><img src='https://assets.ithillel.ua/images/blog/cover/_transform_blogSplash_desktop_2x/Hillel-Blog-ReactReduxContext.jpg'/></div>
                     <div className={s.descriptionBlock}>ava +discription</div>
 
                 </div>
