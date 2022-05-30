@@ -2,10 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {addPost, state} from './redux/state';
+import {addPost} from './redux/state';
 import {BrowserRouter} from "react-router-dom";
 
-let rerenderAll = ()=> {
+import {StateTypeProps} from "./redux/state";
+
+
+
+
+
+
+export let rerenderAll = (state:StateTypeProps)=> {
 
     ReactDOM.render(
         <BrowserRouter>
@@ -17,4 +24,4 @@ let rerenderAll = ()=> {
 
 }
 
-rerenderAll( )
+//rerenderAll( )

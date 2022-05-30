@@ -21,6 +21,8 @@ export const MyPost = (props: PropsPostDate) => {
 
         let text= newPostElement.current!.value;
         props.addPost(text)
+        newPostElement.current!.value=''
+
     }
 
     return (
@@ -28,12 +30,7 @@ export const MyPost = (props: PropsPostDate) => {
             <h3>My post</h3>
             <textarea ref={newPostElement}></textarea>
             <div><button onClick={addPost}>add post</button></div>
-
-            <div><input/></div>
             <div className={s.post}>{postMap}</div>
-
-
-
         </div>
     );
 };

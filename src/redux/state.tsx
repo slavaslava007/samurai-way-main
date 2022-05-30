@@ -1,3 +1,5 @@
+import {rerenderAll} from "../render";
+
 export type MessagePropsType = {
     message: string
     id: number
@@ -80,9 +82,12 @@ export let addPost = (postMessage: string)=>{
     }
 
     state.profilePage.postData.push(newPost)
-}
+    rerenderAll( state);
 
+}
 export default state
+
+
 
 
 
