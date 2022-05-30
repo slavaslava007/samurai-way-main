@@ -37,6 +37,7 @@ export type StateTypeProps = {
         messageData: Array<MessagePropsType>
     }
     sidebar: Array<SideBarType>
+
 }
 
 
@@ -71,6 +72,7 @@ export let state:StateTypeProps = {
 }
 
 export let addPost = (postMessage: string)=>{
+    debugger;
     let newPost={
         id: 5,
         message: postMessage,

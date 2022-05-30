@@ -8,6 +8,8 @@ import {PropsPostDateType} from "../../redux/state";
 
 type PropsPostDate = {
     posts: Array<PropsPostDateType>
+    addPost: (postMessage: string) => void
+
 }
 
 
@@ -16,7 +18,7 @@ export const Profile = (props:PropsPostDate) => {
     return (
         <div >
             <ProfileInfo/>
-            <MyPost  post={props.posts}/>
+            <MyPost  post={props.posts} addPost={props.addPost}/>
         </div>
     );
 };

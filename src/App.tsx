@@ -10,8 +10,10 @@ import { addPost} from './redux/state';
 
 
 type AllProps = {
-    state: StateTypeProps
+    state: StateTypeProps,
+    addPost: (postMessage: string) => void
 }
+
 
 
 
@@ -26,7 +28,7 @@ function App(props: AllProps) {
                     <Dialogs messages={props.state.dialogsPage.messageData}
                              dialogs={props.state.dialogsPage.dialogData}/>}/>
                 <Route path='/profile' render={() =>
-                    <Profile posts={props.state.profilePage.postData}/>}/>
+                    <Profile posts={props.state.profilePage.postData} addPost={props.addPost}/>}/>
 
             </div>
         </div>

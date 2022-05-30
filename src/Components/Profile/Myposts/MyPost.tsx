@@ -5,6 +5,8 @@ import {PropsPostDateType} from "../../../redux/state";
 
 type PropsPostDate = {
     post: Array<PropsPostDateType>
+    addPost: (postMessage: string) => void
+
 }
 
 
@@ -16,8 +18,9 @@ export const MyPost = (props: PropsPostDate) => {
     let newPostElement= React.createRef<HTMLTextAreaElement>()
 
     let addPost=()=>{
+
         let text= newPostElement.current!.value;
-        alert(text)
+        props.addPost(text)
     }
 
     return (
@@ -28,6 +31,7 @@ export const MyPost = (props: PropsPostDate) => {
 
             <div><input/></div>
             <div className={s.post}>{postMap}</div>
+
 
 
         </div>
