@@ -33,6 +33,7 @@ export type DialogDataPropsType = {
 export type StateTypeProps = {
     profilePage: {
         postData: Array<PropsPostDateType>
+        newPostText:string
     }
     dialogsPage: {
         dialogData: Array<DialogDataPropsType>
@@ -46,12 +47,13 @@ export type StateTypeProps = {
 
 
 
-export let state:StateTypeProps = {
+export let state = {
     profilePage: {
         postData: [
             {id: 1, message: 'Hi, how are you?', like: 0},
             {id: 1, message: 'Hi', like: 6}
-        ]
+        ],
+        newPostText:'wf'
     },
     dialogsPage: {
         dialogData: [
@@ -73,18 +75,26 @@ export let state:StateTypeProps = {
     ]
 }
 
-export let addPost = (postMessage: string)=>{
-    debugger;
+export let addPost = ()=>{
+
     let newPost={
         id: 5,
-        message: postMessage,
+        message: state.profilePage.newPostText,
         like: 0
     }
+    state.profilePage.postData.unshift(newPost)
+    state.profilePage.newPostText= ('')
 
-    state.profilePage.postData.push(newPost)
     rerenderAll( state);
-
 }
+
+export let updateNewPostText = (newText: string)=>{
+
+    state.profilePage.newPostText=newText;
+    rerenderAll( state);
+}
+
+
 export default state
 
 

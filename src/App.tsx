@@ -5,14 +5,17 @@ import {Profile} from "./Components/Profile/Profile";
 import {Nav} from "./Components/Nav/Nav";
 import {Dialogs} from "./Components/Dialogs/Dialogs";
 import {Route} from "react-router-dom";
-import { StateTypeProps} from './redux/state';
+import {StateTypeProps, updateNewPostText} from './redux/state';
 import { addPost} from './redux/state';
 
 
 type AllProps = {
     state: StateTypeProps,
-    addPost: (postMessage: string) => void
+    addPost: () => void
+    updateNewPostText: (newText: string) => void
+
 }
+
 
 
 
@@ -28,8 +31,12 @@ function App(props: AllProps) {
                     <Dialogs messages={props.state.dialogsPage.messageData}
                              dialogs={props.state.dialogsPage.dialogData}/>}/>
                 <Route path='/profile' render={() =>
-                    <Profile posts={props.state.profilePage.postData} addPost={props.addPost}/>}/>
-
+                    <Profile posts={props.state.profilePage.postData}
+                             addPost={props.addPost}
+                             updateNewPostText={props.updateNewPostText}
+                             newPostText={props.state.profilePage.newPostText}
+                    />}
+                />
             </div>
         </div>
 

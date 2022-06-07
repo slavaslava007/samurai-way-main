@@ -5,20 +5,25 @@ import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 import {PropsPostDateType} from "../../redux/state";
 
 
-
 type PropsPostDate = {
     posts: Array<PropsPostDateType>
-    addPost: (postMessage: string) => void
+    addPost: () => void
+    updateNewPostText: (postMessage: string) => void
+    newPostText: string
 
 }
 
 
-export const Profile = (props:PropsPostDate) => {
+export const Profile = (props: PropsPostDate) => {
 
     return (
-        <div >
+        <div>
             <ProfileInfo/>
-            <MyPost  post={props.posts} addPost={props.addPost}/>
+            <MyPost post={props.posts}
+                    addPost={props.addPost}
+                    updateNewPostText={props.updateNewPostText}
+                    newPostText={props.newPostText}
+            />
         </div>
     );
 };
