@@ -17,12 +17,12 @@ export const MyPost = (props: PropsPostDate) => {
 
     let postMap = props.post.map(p => <Post name={p.message} like={p.like}/>)
 
-    let newPostElement= React.createRef<HTMLTextAreaElement>()
 
+
+    let newPostElement= React.createRef<HTMLTextAreaElement>()
     let addPost=()=>{
         props.addPost()
     }
-
     let onChange=()=>{
         let text=newPostElement.current!.value;
         props.updateNewPostText(text)

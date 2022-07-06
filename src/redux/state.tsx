@@ -1,4 +1,6 @@
-import {rerenderAll} from "../render";
+let rerenderAll= (state: StateTypeProps)=>{
+    console.log('State change')
+}
 
 export type MessagePropsType = {
     message: string
@@ -24,20 +26,20 @@ export type DialogPropsType = {
 export type MessagesPropsType = {
     messageData: Array<DialogDataPropsType>
 }
-
 export type DialogDataPropsType = {
     name: string
     id: number
 }
-
 export type StateTypeProps = {
     profilePage: {
         postData: Array<PropsPostDateType>
         newPostText:string
+
     }
     dialogsPage: {
         dialogData: Array<DialogDataPropsType>
         messageData: Array<MessagePropsType>
+        newMessageText:string
     }
     sidebar: Array<SideBarType>
 
@@ -47,13 +49,13 @@ export type StateTypeProps = {
 
 
 
-export let state = {
+export let state:StateTypeProps = {
     profilePage: {
         postData: [
             {id: 1, message: 'Hi, how are you?', like: 0},
             {id: 1, message: 'Hi', like: 6}
         ],
-        newPostText:'wf'
+        newPostText:''
     },
     dialogsPage: {
         dialogData: [
@@ -66,7 +68,8 @@ export let state = {
             {id: 1, message: 'How are you?'},
             {id: 2, message: 'Hi'},
             {id: 3, message: 'Hello'},
-            {id: 4, message: 'Im'}]
+            {id: 4, message: 'Im'}],
+            newMessageText:''
     },
     sidebar: [{id: 1, name: 'Kolya'},
         {id: 2, name: 'Andrey'},
@@ -85,17 +88,41 @@ export let addPost = ()=>{
     state.profilePage.postData.unshift(newPost)
     state.profilePage.newPostText= ('')
 
+    rerenderAll(state);
+}
+
+export let addMessage =()=>{
+    let newMessage={
+        id:5,
+        message:state.dialogsPage.newMessageText
+    }
+
+    state.dialogsPage.messageData.push(newMessage)
+    state.dialogsPage.newMessageText=' '
+
+
     rerenderAll( state);
 }
 
 export let updateNewPostText = (newText: string)=>{
 
     state.profilePage.newPostText=newText;
-    rerenderAll( state);
+    rerenderAll(state);
+
+}
+
+export let updateNewMessageText = (t: string)=>{
+
+    state.dialogsPage.newMessageText=t;
+    rerenderAll(state);
+}
+
+export const subscribe = (observer:any) => {
+    rerenderAll=observer
 }
 
 
-export default state
+
 
 
 
